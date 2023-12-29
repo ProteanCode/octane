@@ -1,6 +1,88 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/octane/compare/v1.5.6...master)
+## [Unreleased](https://github.com/laravel/octane/compare/v2.2.6...master)
+
+## [v2.2.6](https://github.com/laravel/octane/compare/v2.2.5...v2.2.6) - 2023-12-26
+
+* Fix public path for roadrunner by [@chaker2710](https://github.com/chaker2710) in https://github.com/laravel/octane/pull/792
+* Added `aarch64` binary for frankenphp  by [@foremtehan](https://github.com/foremtehan) in https://github.com/laravel/octane/pull/793
+
+## [v2.2.5](https://github.com/laravel/octane/compare/v2.2.4...v2.2.5) - 2023-12-21
+
+* Adds `--admin-port` by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/laravel/octane/pull/790
+
+## [v2.2.4](https://github.com/laravel/octane/compare/v2.2.3...v2.2.4) - 2023-12-21
+
+* Fix typo by [@sy-records](https://github.com/sy-records) in https://github.com/laravel/octane/pull/782
+* Improves installation process by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/laravel/octane/pull/785
+* Fix Caddyfile when env var values contain spaces by [@francislavoie](https://github.com/francislavoie) in https://github.com/laravel/octane/pull/786
+* Uses Octane's max execution time by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/laravel/octane/pull/787
+
+## [v2.2.3](https://github.com/laravel/octane/compare/v2.2.2...v2.2.3) - 2023-12-20
+
+* Fixes missing entry to `.gitignore` by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/laravel/octane/pull/780
+
+## [v2.2.2](https://github.com/laravel/octane/compare/v2.2.1...v2.2.2) - 2023-12-20
+
+* Ignores `write error` message for now by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/laravel/octane/pull/778
+* Adds support for multiple FrankenPHP Octane instances by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/laravel/octane/pull/777
+* Improves version fetching by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/laravel/octane/pull/779
+
+## [v2.2.1](https://github.com/laravel/octane/compare/v2.2.0...v2.2.1) - 2023-12-19
+
+* Fixes `NGINX` proxy usages by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/laravel/octane/pull/772
+* Validates if there is a version before using it by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/laravel/octane/pull/773
+
+## [v2.2.0](https://github.com/laravel/octane/compare/v2.1.2...v2.2.0) - 2023-12-18
+
+* Add support for [FrankenPHP](https://frankenphp.dev/) by [@dunglas](https://github.com/dunglas) and [@nunomaduro](https://github.com/nunomaduro) in https://github.com/laravel/octane/pull/764
+
+## [v2.1.2](https://github.com/laravel/octane/compare/v2.1.1...v2.1.2) - 2023-11-27
+
+* PHP 8.3 by [@driesvints](https://github.com/driesvints) in https://github.com/laravel/octane/pull/753
+* Fix missing http code 425 reason. by [@sy-records](https://github.com/sy-records) in https://github.com/laravel/octane/pull/768
+
+## [v2.1.1](https://github.com/laravel/octane/compare/v2.1.0...v2.1.1) - 2023-10-18
+
+- Fix swoole host only configurable via --host parameter + incorrect default port by [@xorinzor](https://github.com/xorinzor) in https://github.com/laravel/octane/pull/762
+
+## [v2.1.0](https://github.com/laravel/octane/compare/v2.0.6...v2.1.0) - 2023-10-06
+
+- Adds Herd support by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/laravel/octane/pull/743
+
+## [v2.0.6](https://github.com/laravel/octane/compare/v2.0.5...v2.0.6) - 2023-08-29
+
+- Fix passing invalid connection session id to `Swoole\Http\Response::create()` by [@smortexa](https://github.com/smortexa) in https://github.com/laravel/octane/pull/737
+- Fix missing mode config by [@sy-records](https://github.com/sy-records) in https://github.com/laravel/octane/pull/740
+- Add `raw` type in handleStream method for custom json in stdout by [@mphamid](https://github.com/mphamid) in https://github.com/laravel/octane/pull/742
+
+## [v2.0.5](https://github.com/laravel/octane/compare/v2.0.4...v2.0.5) - 2023-08-08
+
+- Add IPv6 support for Swoole by [@xorinzor](https://github.com/xorinzor) in https://github.com/laravel/octane/pull/728
+
+## [v2.0.4](https://github.com/laravel/octane/compare/v2.0.3...v2.0.4) - 2023-08-02
+
+- [2.x] Fixes installation when using Herd by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/laravel/octane/pull/726
+
+## [v2.0.3](https://github.com/laravel/octane/compare/v2.0.2...v2.0.3) - 2023-07-20
+
+- Fixes "Incorrect header size" by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/laravel/octane/pull/719
+- Fix handleSignal deprecation warning by [@sy-records](https://github.com/sy-records) in https://github.com/laravel/octane/pull/722
+
+## [v2.0.2](https://github.com/laravel/octane/compare/v2.0.1...v2.0.2) - 2023-06-21
+
+- Disable unintentional swoole header formatting by config value by [@NiroDeveloper](https://github.com/NiroDeveloper) in https://github.com/laravel/octane/pull/710
+
+## [v2.0.1](https://github.com/laravel/octane/compare/v2.0.0...v2.0.1) - 2023-05-26
+
+- `--log-level` option in octane:start command by @glushkovds in https://github.com/laravel/octane/pull/701
+
+## [v2.0.0](https://github.com/laravel/octane/compare/v1.5.6...v2.0.0) - 2023-05-16
+
+- Fix log level by @masterjus in https://github.com/laravel/octane/pull/451
+- Update InteractsWithServers.php by @ghostzero in https://github.com/laravel/octane/pull/520
+- Adds support for RoadRunner v3 and updates dependencies by @nunomaduro in https://github.com/laravel/octane/pull/690
+- Adds support for PSR-7 v2.x by @nunomaduro in https://github.com/laravel/octane/pull/694
 
 ## [v1.5.6](https://github.com/laravel/octane/compare/v1.5.5...v1.5.6) - 2023-05-16
 

@@ -15,16 +15,20 @@ class StartCommand extends Command implements SignalableCommandInterface
      */
     public $signature = 'octane:start
                     {--server= : The server that should be used to serve the application}
-                    {--host=127.0.0.1 : The IP address the server should bind to}
+                    {--host= : The IP address the server should bind to}
                     {--port= : The port the server should be available on [default: "8000"]}
+                    {--admin-port= : The port the admin server should be available on [FrankenPHP only]}
                     {--rpc-host= : The RPC IP address the server should bind to}
                     {--rpc-port= : The RPC port the server should be available on}
                     {--workers=auto : The number of workers that should be available to handle requests}
                     {--task-workers=auto : The number of task workers that should be available to handle tasks}
                     {--max-requests=500 : The number of requests to process before reloading the server}
                     {--rr-config= : The path to the RoadRunner .rr.yaml file}
+                    {--caddyfile= : The path to the FrankenPHP Caddyfile file}
+                    {--https : Enable HTTPS, HTTP/2, and HTTP/3, and automatically generate and renew certificates [FrankenPHP only]}
                     {--watch : Automatically reload the server when the application is modified}
-                    {--poll : Use file system polling while watching in order to watch files over a network}';
+                    {--poll : Use file system polling while watching in order to watch files over a network}
+                    {--log-level= : Log messages at or above the specified log level}';
 
     /**
      * The command's description.
@@ -45,6 +49,7 @@ class StartCommand extends Command implements SignalableCommandInterface
         return match ($server) {
             'swoole' => $this->startSwooleServer(),
             'roadrunner' => $this->startRoadRunnerServer(),
+            'frankenphp' => $this->startFrankenPhpServer(),
             default => $this->invalidServer($server),
         };
     }
@@ -84,6 +89,28 @@ class StartCommand extends Command implements SignalableCommandInterface
             '--rr-config' => $this->option('rr-config'),
             '--watch' => $this->option('watch'),
             '--poll' => $this->option('poll'),
+            '--log-level' => $this->option('log-level'),
+        ]);
+    }
+
+    /**
+     * Start the FrankenPHP server for Octane.
+     *
+     * @return int
+     */
+    protected function startFrankenPhpServer()
+    {
+        return $this->call('octane:frankenphp', [
+            '--host' => $this->getHost(),
+            '--port' => $this->getPort(),
+            '--admin-port' => $this->option('admin-port'),
+            '--workers' => $this->option('workers'),
+            '--max-requests' => $this->option('max-requests'),
+            '--caddyfile' => $this->option('caddyfile'),
+            '--https' => $this->option('https'),
+            '--watch' => $this->option('watch'),
+            '--poll' => $this->option('poll'),
+            '--log-level' => $this->option('log-level'),
         ]);
     }
 

@@ -21,7 +21,7 @@ trait InstallsRoadRunnerDependencies
      *
      * @var string
      */
-    protected $requiredVersion = '2023.1.1';
+    protected $requiredRoadRunnerVersion = '2023.3.0';
 
     /**
      * Determine if RoadRunner is installed.
@@ -90,7 +90,7 @@ trait InstallsRoadRunnerDependencies
             $composerPath = (new ExecutableFinder())->find('composer');
         }
 
-        return '"'.$phpPath.'" '.$composerPath;
+        return '"'.$phpPath.'" "'.$composerPath.'"';
     }
 
     /**
@@ -131,7 +131,7 @@ trait InstallsRoadRunnerDependencies
 
         $version = explode(' ', $version)[2];
 
-        if (version_compare($version, $this->requiredVersion, '>=')) {
+        if (version_compare($version, $this->requiredRoadRunnerVersion, '>=')) {
             return;
         }
 

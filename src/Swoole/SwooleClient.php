@@ -21,6 +21,7 @@ class SwooleClient implements Client, ServesStaticFiles
 {
     const STATUS_CODE_REASONS = [
         419 => 'Page Expired',
+        425 => 'Too Early',
         431 => 'Request Header Fields Too Large',                             // RFC6585
         451 => 'Unavailable For Legal Reasons',                               // RFC7725
     ];
@@ -119,10 +120,12 @@ class SwooleClient implements Client, ServesStaticFiles
         $octaneConfig = $context->octaneConfig ?? [];
 
         if (! empty($octaneConfig['static_file_headers'])) {
+            $formatHeaders = config('octane.swoole.format_headers', true);
+
             foreach ($octaneConfig['static_file_headers'] as $pattern => $headers) {
                 if ($request->is($pattern)) {
                     foreach ($headers as $name => $value) {
-                        $swooleResponse->header($name, $value);
+                        $swooleResponse->header($name, $value, $formatHeaders);
                     }
                 }
             }
@@ -159,9 +162,11 @@ class SwooleClient implements Client, ServesStaticFiles
             unset($headers['Set-Cookie']);
         }
 
+        $formatHeaders = config('octane.swoole.format_headers', true);
+
         foreach ($headers as $name => $values) {
             foreach ($values as $value) {
-                $swooleResponse->header($name, $value);
+                $swooleResponse->header($name, $value, $formatHeaders);
             }
         }
 
